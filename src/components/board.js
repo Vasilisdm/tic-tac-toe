@@ -22,12 +22,12 @@ class Board extends Component {
 
   renderSquare(i) {
     return (
-      <Square value={this.state.squares[i]} onClick={() => this.handleClick[i]}/>
+      <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />
     );
   }
 
   render() {
-    const status = 'Next player: X';
+    const status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
 
     return (
       <div>
