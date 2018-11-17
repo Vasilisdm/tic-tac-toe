@@ -14,6 +14,15 @@ class Board extends Component {
 
   handleClick(i){
     const squares = this.state.squares.slice();
+  
+    /**
+     * If there is a winner or the square is already written then,
+     * ignore any further click on that particular square.
+     */
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
       squares: squares,
