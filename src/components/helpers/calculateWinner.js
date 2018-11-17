@@ -19,3 +19,5 @@ function calculateWinner(squares){
     }
     return null;
 }
+
+export default calculateWinner;
