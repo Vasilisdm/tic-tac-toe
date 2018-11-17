@@ -36,7 +36,7 @@ class Board extends Component {
     if (winner) {
       status = `Winner ${winner}`;
     } else {
-      status = `Next player ${this.state.xIsNext}`;
+      status = `Next player ${this.state.xIsNext ? 'X' : 'O'}`;
     }
     return (
       <div>
