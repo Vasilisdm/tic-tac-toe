@@ -49,7 +49,8 @@ class TicTac extends Component {
 
   render() {
     const history = this.state.history;
-    const current = history[history.length-1];
+    // Rendering the currently selected move
+    const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
     const moves = history.map((step, move) => {
       const desc = move ? 
