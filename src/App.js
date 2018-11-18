@@ -31,7 +31,11 @@ class TicTac extends Component {
       history: history.concat([{
         squares: squares
       }]),
-      stepNumber: 0,
+      /**
+       * Ensures that the game won't get stuck showing the same move, 
+       * after a new move has been made.
+       */
+      stepNumber: history.length,
       xIsNext: !this.state.xIsNext
     });
   }
