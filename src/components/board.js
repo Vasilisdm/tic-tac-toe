@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Square from './square';
-import calculateWinner from './helpers/calculateWinner';
 
 class Board extends Component {
-  
+
   renderSquare(i) {
     return (
       <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />
