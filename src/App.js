@@ -39,7 +39,16 @@ class TicTac extends Component {
     const history = this.state.history;
     const current = history[history.length-1];
     const winner = calculateWinner(current.squares);
-
+    const moves = history.map((step, move) => {
+      const desc = move ? 
+        `Go to move #${move}` :
+        `Go to game start`
+        return(
+          <li key={move}>
+            <button onClick={() =>this.jumpTo(move)}>{desc}</button>
+          </li>
+        )
+    });
     let status;
 
     if (winner) {
@@ -55,7 +64,8 @@ class TicTac extends Component {
         </section>
 
         <section className="game-info">
-          {status}
+          <h3>{status}</h3>
+          <ol>{moves}</ol>
         </section>
 
       </div>
