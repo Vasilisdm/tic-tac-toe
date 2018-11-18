@@ -3,23 +3,7 @@ import Square from './square';
 import calculateWinner from './helpers/calculateWinner';
 
 class Board extends Component {
-
-  handleClick(i){
-    const squares = this.state.squares.slice();
-    /**
-     * If there is a winner or the square is already written then,
-     * ignore any further click on that particular square.
-     */
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
-    this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext
-    });
-  }
-
+  
   renderSquare(i) {
     return (
       <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />
@@ -27,19 +11,8 @@ class Board extends Component {
   }
 
   render() {
-
-    const winner = calculateWinner(this.state.squares);
-
-    let status;
-
-    if (winner) {
-      status = `Winner ${winner}`;
-    } else {
-      status = `Next player ${this.state.xIsNext ? 'X' : 'O'}`;
-    }
     return (
       <div>
-        <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
