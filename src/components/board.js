@@ -4,17 +4,8 @@ import calculateWinner from './helpers/calculateWinner';
 
 class Board extends Component {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true
-    };
-  }
-
   handleClick(i){
     const squares = this.state.squares.slice();
-  
     /**
      * If there is a winner or the square is already written then,
      * ignore any further click on that particular square.
@@ -22,7 +13,6 @@ class Board extends Component {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
       squares: squares,
@@ -32,7 +22,7 @@ class Board extends Component {
 
   renderSquare(i) {
     return (
-      <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />
+      <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />
     );
   }
 
